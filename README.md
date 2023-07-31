@@ -155,3 +155,6 @@
     - Authorization: Bearer Token
     - Input:
         - (masukkan input yang dibutuhkan untuk log aktivitas)
+
+## Link Test API Postman
+https://app.getpostman.com/join-team?invite_code=4c5044ac2c5f6b3a2d3111ea29218be0&target_code=65240beb93fcf97ec6283caed6dc8605
