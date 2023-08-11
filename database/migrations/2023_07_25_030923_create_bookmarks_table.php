@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('nohp');
             $table->string('id_chat');
             $table->timestamps();
         });

@@ -21,43 +21,40 @@ class datasampel extends Seeder
     {
         // data sampel
         $user = [
-            ['email' => 'user1@gmail.com', 'username' => 'user1', 'password' => bcrypt('password1'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
-            ['email' => 'user2@gmail.com', 'username' => 'user2', 'password' => bcrypt('password2'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
-            ['email' => 'user10@gmail.com', 'username' => 'user10', 'password' => bcrypt('password10'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
-            ['email' => 'user4@gmail.com', 'username' => 'user4', 'password' => bcrypt('password4'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
-            ['email' => 'user5@gmail.com', 'username' => 'user5', 'password' => bcrypt('password5'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
-            ['email' => 'user6@gmail.com', 'username' => 'user6', 'password' => bcrypt('password6'), 'role' => 'ahli', 'remember_token' => 'token_' . Str::random(15),],
-            ['email' => 'user7@gmail.com', 'username' => 'user7', 'password' => bcrypt('password7'), 'role' => 'ahli', 'remember_token' => 'token_' . Str::random(15),],
-            ['email' => 'user8@gmail.com', 'username' => 'user8', 'password' => bcrypt('password8'), 'role' => 'ahli', 'remember_token' => 'token_' . Str::random(15),],
-            ['email' => 'user9@gmail.com', 'username' => 'user9', 'password' => bcrypt('password9'), 'role' => 'ahli', 'remember_token' => 'token_' . Str::random(15),],
-            ['email' => 'tasim@gmail.com', 'username' => 'tasim', 'password' => bcrypt('123'), 'role' => 'admin', 'remember_token' => 'token_' . Str::random(15),],
+            ['nohp' => '081234567890', 'username' => 'user1', 'password' => bcrypt('password1'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
+            ['nohp' => '082145678901', 'username' => 'user2', 'password' => bcrypt('password2'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
+            ['nohp' => '085678901234', 'username' => 'user10', 'password' => bcrypt('password10'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
+            ['nohp' => '083212345678', 'username' => 'user4', 'password' => bcrypt('password4'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
+            ['nohp' => '081312345678', 'username' => 'user5', 'password' => bcrypt('password5'), 'role' => 'petani', 'remember_token' => 'token_' . Str::random(15),],
+            ['nohp' => '087612345678', 'username' => 'user6', 'password' => bcrypt('password6'), 'role' => 'ahli', 'remember_token' => 'token_' . Str::random(15),],
+            ['nohp' => '085789012345', 'username' => 'user7', 'password' => bcrypt('password7'), 'role' => 'ahli', 'remember_token' => 'token_' . Str::random(15),],
+            ['nohp' => '089876543210', 'username' => 'user8', 'password' => bcrypt('password8'), 'role' => 'ahli', 'remember_token' => 'token_' . Str::random(15),],
+            ['nohp' => '082178901234', 'username' => 'user9', 'password' => bcrypt('password9'), 'role' => 'ahli', 'remember_token' => 'token_' . Str::random(15),],
+            // admin
+            ['nohp' => 'superadmin@haipetani.com', 'username' => 'Super Admin', 'password' => bcrypt('123'), 'role' => 'admin', 'remember_token' => 'token_' . Str::random(15),],
+
         ];
         $pesan = [
-            [
-                'email_pengirim' => 'user1@gmail.com',
-                'email_penerima' => 'user2@gmail.com',
-                'text_pesan' => 'Halo, apa kabar?',
-                'gambar_pesan' => NULL,
-            ],
-            ['email_pengirim' => 'user2@gmail.com', 'email_penerima' => 'user1@gmail.com', 'text_pesan' => 'Hai, saya baik-baik saja.', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user1@gmail.com', 'email_penerima' => 'user3@gmail.com', 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user3@gmail.com', 'email_penerima' => 'user1@gmail.com', 'text_pesan' => 'Saya baik, terima kasih.', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user1@gmail.com', 'email_penerima' => 'user4@gmail.com', 'text_pesan' => 'Halo!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user1@gmail.com', 'email_penerima' => 'user5@gmail.com', 'text_pesan' => 'Selamat pagi!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user4@gmail.com', 'email_penerima' => 'user1@gmail.com', 'text_pesan' => 'Hai!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user2@gmail.com', 'email_penerima' => 'user3@gmail.com', 'text_pesan' => 'Halo user3!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user3@gmail.com', 'email_penerima' => 'user2@gmail.com', 'text_pesan' => 'Halo user2!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user3@gmail.com', 'email_penerima' => 'user4@gmail.com', 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user4@gmail.com', 'email_penerima' => 'user3@gmail.com', 'text_pesan' => 'Saya baik, terima kasih.', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user2@gmail.com', 'email_penerima' => 'user4@gmail.com', 'text_pesan' => 'Halo user4!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user4@gmail.com', 'email_penerima' => 'user2@gmail.com', 'text_pesan' => 'Halo user2!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user5@gmail.com', 'email_penerima' => 'user1@gmail.com', 'text_pesan' => 'Selamat pagi juga!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user1@gmail.com', 'email_penerima' => 'user6@gmail.com', 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user6@gmail.com', 'email_penerima' => 'user1@gmail.com', 'text_pesan' => 'Saya baik, terima kasih.', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user2@gmail.com', 'email_penerima' => 'user5@gmail.com', 'text_pesan' => 'Halo user5!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user5@gmail.com', 'email_penerima' => 'user2@gmail.com', 'text_pesan' => 'Halo user2!', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user3@gmail.com', 'email_penerima' => 'user5@gmail.com', 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
-            ['email_pengirim' => 'user5@gmail.com', 'email_penerima' => 'user3@gmail.com', 'text_pesan' => 'Saya baik, terima kasih.', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '081234567890', 'no_penerima' => '082145678901', 'status' => 1, 'text_pesan' => 'Halo, apa kabar?', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '082145678901', 'no_penerima' => '081234567890', 'status' => 1, 'text_pesan' => 'Hai, saya baik-baik saja.', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '081234567890', 'no_penerima' => 'user3@gmail.com', 'status' => 1, 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '085678901234', 'no_penerima' => '081234567890', 'status' => 1, 'text_pesan' => 'Saya baik, terima kasih.', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '081234567890', 'no_penerima' => '083212345678', 'status' => 1, 'text_pesan' => 'Halo!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '081234567890', 'no_penerima' => '081312345678', 'status' => 1, 'text_pesan' => 'Selamat pagi!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '083212345678', 'no_penerima' => '081234567890', 'status' => 1, 'text_pesan' => 'Hai!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '082145678901', 'no_penerima' => '085678901234', 'status' => 1, 'text_pesan' => 'Halo user3!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '085678901234', 'no_penerima' => '082145678901', 'status' => 1, 'text_pesan' => 'Halo user2!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '085678901234', 'no_penerima' => '083212345678', 'status' => 1, 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '083212345678', 'no_penerima' => '085678901234', 'status' => 1, 'text_pesan' => 'Saya baik, terima kasih.', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '082145678901', 'no_penerima' => '083212345678', 'status' => 1, 'text_pesan' => 'Halo user4!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '083212345678', 'no_penerima' => '082145678901', 'status' => 1, 'text_pesan' => 'Halo user2!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '081312345678', 'no_penerima' => '081234567890', 'status' => 1, 'text_pesan' => 'Selamat pagi juga!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '081234567890', 'no_penerima' => '087612345678', 'status' => 1, 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '087612345678', 'no_penerima' => '081234567890', 'status' => 1, 'text_pesan' => 'Saya baik, terima kasih.', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '082145678901', 'no_penerima' => '081312345678', 'status' => 1, 'text_pesan' => 'Halo user5!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '081312345678', 'no_penerima' => '082145678901', 'status' => 1, 'text_pesan' => 'Halo user2!', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '085678901234', 'no_penerima' => '081312345678', 'status' => 1, 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '081312345678', 'no_penerima' => '085678901234', 'status' => 1, 'text_pesan' => 'Saya baik, terima kasih.', 'gambar_pesan' => NULL,],
         ];
         $faq = [
             ['judul' => 'Judul Pertanyaan 1', 'kategori' => 'pertanian', 'ciri2' => 'Ciri-ciri Pertanyaan 1', 'solusi' => 'Solusi Pertanyaan 1', 'created_at' => now(), 'updated_at' => now(),],
@@ -72,15 +69,15 @@ class datasampel extends Seeder
             ['judul' => 'Judul Pertanyaan 10', 'kategori' => 'lingkungan', 'ciri2' => 'Ciri-ciri Pertanyaan 10', 'solusi' => 'Solusi Pertanyaan 10', 'created_at' => now(), 'updated_at' => now(),],
         ];
         $bookmark = [
-            ['email' => 'user1@gmail.com', 'id_chat' => 1,],
-            ['email' => 'user1@gmail.com', 'id_chat' => 3,],
-            ['email' => 'user1@gmail.com', 'id_chat' => 4,],
-            ['email' => 'user2@gmail.com', 'id_chat' => 1,],
-            ['email' => 'user2@gmail.com', 'id_chat' => 6,],
-            ['email' => 'user3@gmail.com', 'id_chat' => 3,],
-            ['email' => 'user3@gmail.com', 'id_chat' => 7,],
-            ['email' => 'user4@gmail.com', 'id_chat' => 5,],
-            ['email' => 'user4@gmail.com', 'id_chat' => 6,],
+            ['nohp' => '081234567890', 'id_chat' => 1,],
+            ['nohp' => '081234567890', 'id_chat' => 3,],
+            ['nohp' => '081234567890', 'id_chat' => 4,],
+            ['nohp' => '082145678901', 'id_chat' => 1,],
+            ['nohp' => '082145678901', 'id_chat' => 6,],
+            ['nohp' => '085678901234', 'id_chat' => 3,],
+            ['nohp' => '085678901234', 'id_chat' => 7,],
+            ['nohp' => '083212345678', 'id_chat' => 5,],
+            ['nohp' => '083212345678', 'id_chat' => 6,],
         ];
 
         // eksekusi
@@ -88,10 +85,10 @@ class datasampel extends Seeder
             user::create($data);
             switch ($data['role']) {
                 case 'petani':
-                    $petani = u_petani::create(collect($data)->only('email')->toArray());
+                    $petani = u_petani::create(collect($data)->only('nohp')->toArray());
                     break;
                 case 'ahli':
-                    $ahli = u_ahli::create(collect($data)->only('email')->toArray());
+                    $ahli = u_ahli::create(collect($data)->only('nohp')->toArray());
                     break;
             }
         }

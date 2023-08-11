@@ -9,7 +9,7 @@ class masukan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'email',
+        'nohp',
         'masukan',
     ];
 }

@@ -37,6 +37,7 @@ class profilController extends BaseController
         $profil = $req->all();
         // validasi
         $validator = Validator::make($profil, [
+            'username' => 'string',
             'email' => 'email',
             'telp' => 'numeric',
             'nik' => 'numeric',

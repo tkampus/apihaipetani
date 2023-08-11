@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            $table->string('email_pengirim');
-            $table->string('email_penerima');
+            $table->string('no_pengirim');
+            $table->string('no_penerima');
             $table->string('text_pesan')->nullable();
             $table->binary('gambar_pesan')->nullable();
+            $table->integer('status');
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@ class log_activity extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'email',
+        'nohp',
         'activitas',
     ];
 }

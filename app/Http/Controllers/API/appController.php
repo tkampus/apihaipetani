@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\faq;
+use App\Models\chat;
 use App\Models\User;
 use App\Models\event;
 use App\Models\u_ahli;
@@ -13,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\API\BaseController;
 
@@ -22,16 +24,16 @@ class appController extends BaseController
     {
         // validasi
         $validator = Validator::make($req->all(), [
-            'email' => 'required|email|unique:users,email',
+            'nohp' => 'required|regex:/^\d{10,12}$/|unique:users,nohp',
             'password' => 'required',
             'c-password' => 'required|same:password',
-            'role' => 'required|in:petani,ahli',
         ]);
         if ($validator->fails()) {
             return $this->sendError('Validation Error!', $validator->errors());
         }
         // buat akun
         $input = $req->all();
+        $input['role'] = 'petani';
         $input['username'] = 'user_' . Str::random(6);
         $input['remember_token'] = 'token_' . Str::random(15);
         $input['password'] = bcrypt($input['password']);
@@ -60,7 +62,7 @@ class appController extends BaseController
         // validasi
         if (Auth::attempt(
             [
-                'email' => $req->email,
+                'nohp' => $req->nohp,
                 'password' => $req->password
             ]
         )) {
@@ -86,7 +88,7 @@ class appController extends BaseController
         $data = $req->all();
         // logik
         $masukan = masukan::create([
-            'email' => $user->email,
+            'nohp' => $user->nohp,
             'masukan' => $data['masukan']
         ]);
         return $this->sendResponse($masukan, 'Berhasil input masukan');
@@ -96,5 +98,22 @@ class appController extends BaseController
     {
         $data = event::latest()->first();
         return $this->sendResponse($data);
+    }
+
+    public function getimagechat($id)
+    {
+        $event = chat::find($id);
+        return Response::make($event->gambar_pesan, 200, [
+            'Content-Type' => 'image/jpeg',
+            'Content-Disposition' => 'inline; filename="' . $event->judul . '.jpeg"',
+        ]);
+    }
+    public function getimageevent($id)
+    {
+        $event = event::find($id);
+        return Response::make($event->gambar, 200, [
+            'Content-Type' => 'image/jpeg',
+            'Content-Disposition' => 'inline; filename="' . $event->judul . '.jpeg"',
+        ]);
     }
 }

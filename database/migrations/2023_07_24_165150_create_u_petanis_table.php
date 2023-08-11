@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('u_petanis', function (Blueprint $table) {
-            $table->string('email')->unique();
-            $table->string('telp');
+            $table->string('nohp')->unique();
+            $table->string('email');
             $table->string('nik');
             $table->string('jeniskelamin');
             $table->date('tanggallahir');

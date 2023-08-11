@@ -9,7 +9,7 @@ class bookmark extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'email',
+        'nohp',
         'id_chat',
     ];
 
@@ -20,8 +20,8 @@ class bookmark extends Model
             ->select(
                 'bookmarks.id as id_bookmark',
                 'chats.id as id_chats',
-                'chats.email_pengirim',
-                'chats.email_penerima',
+                'chats.no_pengirim',
+                'chats.no_penerima',
                 'chats.text_pesan',
                 'chats.gambar_pesan',
                 'chats.created_at'

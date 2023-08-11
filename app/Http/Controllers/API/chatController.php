@@ -71,12 +71,14 @@ class chatController extends BaseController
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
-        // logik
+        // logik imgae jiak gambar_text != null
+        if ($data['gambar_image'] != null) {
+            $imagePath = $req->file('gambar')->getPathname();
+            $data['gambar_pesan'] = file_get_contents($imagePath);
+        }
+
         $data['email_pengirim'] = $user->email;
         // logik untuk mengirim gambar ke datase eror
-        if($data['gambar_pesan']){
-            $data['gambar_pesan'] = $req->file('gambar_pesan');
-        }
 
         $success = Chat::create($data);
         return $this->sendResponse($success, 'Chat berhasil di tambahkan');

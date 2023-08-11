@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('log_activities', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('nohp');
             $table->string('activitas');
             $table->timestamps();
         });

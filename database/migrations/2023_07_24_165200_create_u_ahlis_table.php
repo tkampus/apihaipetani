@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('u_ahlis', function (Blueprint $table) {
             // $table->id();
-            $table->string('email')->unique();
-            $table->string('telp');
+            $table->string('nohp')->unique();
+            $table->string('email');
             $table->string('nik');
             $table->string('jeniskelamin');
             $table->date('tanggallahir');
