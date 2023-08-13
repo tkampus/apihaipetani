@@ -20,7 +20,7 @@ class u_petani extends Model
     {
         // Set nilai default untuk kolom yang diinginkan sebelum model disimpan
         static::creating(function ($model) {
-            $model->telp = '';
+            $model->email = '';
             $model->nik = '';
             $model->tanggallahir = date('Y-m-d');
             $model->jeniskelamin = 'laki-laki';

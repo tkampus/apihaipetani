@@ -17,17 +17,18 @@ class profilController extends BaseController
     public function get(Request $req): JsonResponse
     {
         $user = Auth::user();
-        switch ($user->role) {
+        switch ($user['role']) {
             case 'petani':
-                $profil = u_petani::where('email', $user->email)->first();
+                $profil = u_petani::where('nohp', $user->nohp)->first();
                 break;
             case 'ahli':
-                $profil = u_ahli::where('email', $user->email)->first();
+                $profil = u_ahli::where('nohp', $user->nohp)->first();
                 break;
             default:
                 return $this->sendError('Role Error!', ['error' => 'Undifined Role']);
                 break;
         }
+        // return $user;
         $profil['username'] = $user->username;
         return $this->sendResponse($profil);
     }
@@ -41,7 +42,7 @@ class profilController extends BaseController
             'email' => 'email',
             'telp' => 'numeric',
             'nik' => 'numeric',
-            'jeniskelamin' => 'in:Laki-laki,Perempuan',
+            'jeniskelamin' => 'in:laki-laki,perempuan',
             'tanggallahir' => 'date',
             'alamat' => 'string',
             'nip' => 'string',
@@ -55,14 +56,14 @@ class profilController extends BaseController
         }
         // logik
         $username['username'] = $profil['username'];
-        User::where('email', $user->email)->update($username);
+        User::where('nohp', $user->nohp)->update($username);
         unset($profil['username']);
         switch ($user->role) {
             case 'petani':
-                u_petani::where('email', $user->email)->update($profil);
+                u_petani::where('nohp', $user->nohp)->update($profil);
                 break;
             case 'ahli':
-                u_ahli::where('email', $user->email)->update($profil);
+                u_ahli::where('nohp', $user->nohp)->update($profil);
                 break;
             default:
                 return $this->sendError('Role Error!', ['error' => 'Undifined Role']);

@@ -34,12 +34,11 @@ class chat extends Model
                 ->where('no_penerima', $email1);
         })->orderBy('created_at', 'asc')->get();
 
-        // Mengonversi data gambar dari BLOB ke base64 encoded string
         foreach ($chats as $chat) {
-            if ($chat->gambar_pesan) {
-                $chat->gambar_pesan = base64_encode($chat->gambar_pesan);
-            }
+            $chat->status = 2;
+            $chat->save();
         }
+        // Mengonversi data gambar dari BLOB ke base64 encoded string
 
         return $chats;
     }

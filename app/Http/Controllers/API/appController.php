@@ -38,18 +38,7 @@ class appController extends BaseController
         $input['remember_token'] = 'token_' . Str::random(15);
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        // buat tabel data user
-        switch ($req->role) {
-            case 'petani':
-                $petani = u_petani::create($input);
-                break;
-            case 'ahli':
-                $ahli = u_ahli::create($input);
-                break;
-            default:
-                return $this->sendError('Role Error!', ['error' => 'Undifined Role']);
-                break;
-        }
+        $petani = u_petani::create($input);
 
         // buat request
         $success['token'] = $user->createToken($user->remember_token)->plainTextToken;
@@ -99,7 +88,7 @@ class appController extends BaseController
         $data = event::latest()->first();
         return $this->sendResponse($data);
     }
-
+    // belum di serifikasi
     public function getimagechat($id)
     {
         $event = chat::find($id);

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('alamat');
             // ahli
             $table->string('nip');
+            $table->float('bintang', 2, 1);
             $table->string('keahlian1');
             $table->string('keahlian2');
             $table->string('kantor');

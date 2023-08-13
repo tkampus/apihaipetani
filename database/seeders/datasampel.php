@@ -37,7 +37,7 @@ class datasampel extends Seeder
         $pesan = [
             ['no_pengirim' => '081234567890', 'no_penerima' => '082145678901', 'status' => 1, 'text_pesan' => 'Halo, apa kabar?', 'gambar_pesan' => NULL,],
             ['no_pengirim' => '082145678901', 'no_penerima' => '081234567890', 'status' => 1, 'text_pesan' => 'Hai, saya baik-baik saja.', 'gambar_pesan' => NULL,],
-            ['no_pengirim' => '081234567890', 'no_penerima' => 'user3@gmail.com', 'status' => 1, 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
+            ['no_pengirim' => '081234567890', 'no_penerima' => '085678901234', 'status' => 1, 'text_pesan' => 'Apa kabar?', 'gambar_pesan' => NULL,],
             ['no_pengirim' => '085678901234', 'no_penerima' => '081234567890', 'status' => 1, 'text_pesan' => 'Saya baik, terima kasih.', 'gambar_pesan' => NULL,],
             ['no_pengirim' => '081234567890', 'no_penerima' => '083212345678', 'status' => 1, 'text_pesan' => 'Halo!', 'gambar_pesan' => NULL,],
             ['no_pengirim' => '081234567890', 'no_penerima' => '081312345678', 'status' => 1, 'text_pesan' => 'Selamat pagi!', 'gambar_pesan' => NULL,],

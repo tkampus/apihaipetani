@@ -17,6 +17,7 @@ class u_ahli extends Model
         'alamat',
         // ahli
         'nip',
+        'bintang',
         'keahlian1',
         'keahlian2',
         'kantor'
@@ -25,12 +26,13 @@ class u_ahli extends Model
     {
         // Set nilai default untuk kolom yang diinginkan sebelum model disimpan
         static::creating(function ($model) {
-            $model->telp = '';
+            $model->email = '';
             $model->nik = '';
             $model->tanggallahir = date('Y-m-d');
             $model->jeniskelamin = 'laki-laki';
             $model->alamat = '';
             $model->nip = '';
+            $model->bintang = 3.1;
             $model->keahlian1 = '';
             $model->keahlian2 = '';
             $model->kantor = '';
