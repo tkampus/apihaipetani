@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\API\BaseController;
@@ -90,5 +92,29 @@ class appController extends BaseController
             $data['gambar'] = route('getimgevent', ['id' => $data['id']]);
         }
         return $this->sendResponse($data);
+    }
+    public function resetpassword(Request $req)
+    {
+        $user = Auth::user();
+        $validator = Validator::make($req->all(), [
+            'l-password' => 'required',
+            'password' => 'required',
+            'c-password' => 'required|same:password',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error!', $validator->errors());
+        }
+        // Logika untuk memeriksa apakah l-password benar
+        $data = User::where('nohp', $user['nohp'])->first();
+        if (!Hash::check($req->input('l-password'), $data->password)) {
+            // return jika pass salah
+            return $this->sendError('wrong password', ['error' => 'Password lama salah']);
+        }
+
+        // Ubah password menjadi yang baru
+        $data->password = Hash::make($req->input('password'));
+        $data->save();
+        // return susccse
+        return $this->sendResponse([], 'Berhasil mengganti password');
     }
 }

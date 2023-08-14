@@ -35,6 +35,8 @@ Route::post('getfaq', [faqController::class, 'get']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     // logout
     Route::post('logout', [appController::class, 'keluar']);
+    // ganti password
+    Route::post('resetpassword', [appController::class, 'resetpassword']);
     // masukan
     Route::post('setmasukan', [appController::class, 'setmasukan']);
     // profil
