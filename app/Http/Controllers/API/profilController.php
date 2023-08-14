@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use Exception;
 use App\Models\User;
 use App\Models\u_ahli;
 use App\Models\u_petani;
@@ -68,16 +69,20 @@ class profilController extends BaseController
             $profil['gambar'] = fread($gambarStream, filesize($gambar->getRealPath()));
             fclose($gambarStream);
         }
-        switch ($user->role) {
-            case 'petani':
-                u_petani::where('nohp', $user->nohp)->update($profil);
-                break;
-            case 'ahli':
-                u_ahli::where('nohp', $user->nohp)->update($profil);
-                break;
-            default:
-                return $this->sendError('Role Error!', ['error' => 'Undifined Role']);
-                break;
+        try {
+            switch ($user->role) {
+                case 'petani':
+                    u_petani::where('nohp', $user->nohp)->update($profil);
+                    break;
+                case 'ahli':
+                    u_ahli::where('nohp', $user->nohp)->update($profil);
+                    break;
+                default:
+                    return $this->sendError('Role Error!', ['error' => 'Undifined Role']);
+                    break;
+            }
+        } catch (Exception $e) {
+            return $this->sendError(['error' => 'Terjadi kesalahan saat menyimpan chat']);
         }
         $profil = $req->all();
         $profil['nohp'] = $user['nohp'];
