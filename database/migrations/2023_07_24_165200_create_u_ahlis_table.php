@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('u_ahlis', function (Blueprint $table) {
             // $table->id();
             $table->string('nohp')->unique();
+            $table->binary('gambar')->nullable();
             $table->string('email');
             $table->string('nik');
             $table->string('jeniskelamin');

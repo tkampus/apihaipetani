@@ -86,23 +86,9 @@ class appController extends BaseController
     public function getevent(Request $req)
     {
         $data = event::latest()->first();
+        if ($data) {
+            $data['gambar'] = route('getimgevent', ['id' => $data['id']]);
+        }
         return $this->sendResponse($data);
-    }
-    // belum di serifikasi
-    public function getimagechat($id)
-    {
-        $event = chat::find($id);
-        return Response::make($event->gambar_pesan, 200, [
-            'Content-Type' => 'image/jpeg',
-            'Content-Disposition' => 'inline; filename="' . $event->judul . '.jpeg"',
-        ]);
-    }
-    public function getimageevent($id)
-    {
-        $event = event::find($id);
-        return Response::make($event->gambar, 200, [
-            'Content-Type' => 'image/jpeg',
-            'Content-Disposition' => 'inline; filename="' . $event->judul . '.jpeg"',
-        ]);
     }
 }

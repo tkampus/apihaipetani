@@ -30,6 +30,9 @@ class profilController extends BaseController
         }
         // return $user;
         $profil['username'] = $user->username;
+        if ($profil['gambar'] != null) {
+            $profil['gambar'] =  route('getimgprofil', ['nohp' => $profil['nohp'], 'role' => $user['role']]);
+        }
         return $this->sendResponse($profil);
     }
     public function up(Request $req): JsonResponse
@@ -40,6 +43,7 @@ class profilController extends BaseController
         $validator = Validator::make($profil, [
             'username' => 'string',
             'email' => 'email',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'telp' => 'numeric',
             'nik' => 'numeric',
             'jeniskelamin' => 'in:laki-laki,perempuan',
@@ -58,6 +62,12 @@ class profilController extends BaseController
         $username['username'] = $profil['username'];
         User::where('nohp', $user->nohp)->update($username);
         unset($profil['username']);
+        $gambar = $req->file('gambar');
+        if ($gambar) {
+            $gambarStream = fopen($gambar->getRealPath(), 'rb');
+            $profil['gambar'] = fread($gambarStream, filesize($gambar->getRealPath()));
+            fclose($gambarStream);
+        }
         switch ($user->role) {
             case 'petani':
                 u_petani::where('nohp', $user->nohp)->update($profil);
@@ -69,6 +79,9 @@ class profilController extends BaseController
                 return $this->sendError('Role Error!', ['error' => 'Undifined Role']);
                 break;
         }
-        return $this->sendResponse($req->all(), 'Update profil successfully!');
+        $profil = $req->all();
+        $profil['nohp'] = $user['nohp'];
+        $profil['gambar'] = route('getimgprofil', ['nohp' => $user['nohp'], 'role' => $user['role']]);
+        return $this->sendResponse($profil, 'Update profil successfully!');
     }
 }

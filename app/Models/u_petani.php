@@ -10,6 +10,7 @@ class u_petani extends Model
     use HasFactory;
     protected $fillable = [
         'nohp',
+        'gambar',
         'email',
         'nik',
         'jeniskelamin',
@@ -20,6 +21,7 @@ class u_petani extends Model
     {
         // Set nilai default untuk kolom yang diinginkan sebelum model disimpan
         static::creating(function ($model) {
+            $model->gambar = null;
             $model->email = '';
             $model->nik = '';
             $model->tanggallahir = date('Y-m-d');

@@ -10,6 +10,7 @@ class u_ahli extends Model
     use HasFactory;
     protected $fillable = [
         'nohp',
+        'gambar',
         'email',
         'nik',
         'jeniskelamin',
@@ -27,6 +28,7 @@ class u_ahli extends Model
         // Set nilai default untuk kolom yang diinginkan sebelum model disimpan
         static::creating(function ($model) {
             $model->email = '';
+            $model->gambar = null;
             $model->nik = '';
             $model->tanggallahir = date('Y-m-d');
             $model->jeniskelamin = 'laki-laki';

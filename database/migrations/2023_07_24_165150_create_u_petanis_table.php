@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('u_petanis', function (Blueprint $table) {
             $table->string('nohp')->unique();
+            $table->binary('gambar')->nullable();
             $table->string('email');
             $table->string('nik');
             $table->string('jeniskelamin');

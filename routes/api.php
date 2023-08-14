@@ -7,6 +7,8 @@ use App\Http\Controllers\API\faqController;
 use App\Http\Controllers\API\chatController;
 use App\Http\Controllers\API\profilController;
 use App\Http\Controllers\API\bookmarkController;
+use App\Http\Controllers\API\imgController;
+use App\Models\event;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('setchat', [chatController::class, 'setchat']);
 });
 
+
+// tester scantum
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// tester input gambar
+Route::post('inpugambar', [imgController::class, 'inpugambar']);

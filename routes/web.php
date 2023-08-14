@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\P1Controller;
+use App\Http\Controllers\WEB\linkcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +17,7 @@ use App\Http\Controllers\P1Controller;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('api', [P1Controller::class, 'api']);
+
+route::get('getimgevent:{id}', [linkcontroller::class, 'getimgevent'])->name('getimgevent');
+route::get('getimgchat:{id}', [linkcontroller::class, 'getimgchat'])->name('getimgchat');
+route::get('getimgprofil:{role}:{nohp}', [linkcontroller::class, 'getimgprofil'])->name('getimgprofil');
