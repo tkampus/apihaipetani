@@ -62,6 +62,11 @@ class chatController extends BaseController
             if ($chat->gambar_pesan) {
                 $chat->gambar_pesan = route('getimgchat', ['id' => $chat->id]);
             }
+            if ($chat->no_pengirim == $user->nohp) {
+                $chat['mymessage'] = true;
+            } else {
+                $chat['mymessage'] = false;
+            }
         }
         return $this->sendResponse($datas);
     }
