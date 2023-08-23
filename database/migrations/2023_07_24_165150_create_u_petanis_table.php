@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('u_petanis', function (Blueprint $table) {
+            $table->id();
             $table->string('nohp')->unique();
-            $table->binary('gambar')->nullable();
+            // $table->binary('gambar')->nullable();
+            $table->string('gambar')->nullable();
             $table->string('email');
             $table->string('nik');
             $table->string('jeniskelamin');

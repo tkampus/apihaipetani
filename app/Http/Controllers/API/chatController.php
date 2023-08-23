@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Exception;
 use App\Models\chat;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -70,7 +71,7 @@ class chatController extends BaseController
         }
         return $this->sendResponse($datas);
     }
-    public function setchat(Request $req)
+    public function setchat(Request $req): JsonResponse
     {
         $user = Auth::user();
         $data = $req->all();
@@ -90,22 +91,22 @@ class chatController extends BaseController
 
         $gambar = $req->file('gambar_pesan');
         if ($gambar) {
-            $gambarStream = fopen($gambar->getRealPath(), 'rb');
-            $data['gambar_pesan'] = fread($gambarStream, filesize($gambar->getRealPath()));
-            fclose($gambarStream);
+            // ================================================== disimpan binray di badabase
+            // $gambarStream = fopen($gambar->getRealPath(), 'rb');
+            // $data['gambar_pesan'] = fread($gambarStream, filesize($gambar->getRealPath()));
+            // fclose($gambarStream);
+            // =================================================== disimpan di text di dabase
+            // $data['gambar_pesan'] = base64_encode(file_get_contents($req->file('gambar_pesan')->getRealPath()));
+            // =================================================== disipan di storage web api
+            $data['gambar_pesan'] = $this->saveimg('chat', $req->file('gambar_pesan'));
         }
 
         try {
-            $chat = new Chat();
-            $chat->no_pengirim = $data['no_pengirim'];
-            $chat->no_penerima = $data['no_penerima'];
-            $chat->text_pesan = $data['text_pesan'] ?? null;
-            $chat->gambar_pesan = $data['gambar_pesan'] ?? null;
-            $chat->status = $data['status'];
-
-            $chat->save();
-
-            return $this->sendResponse('chat', 'Chat berhasil ditambahkan');
+            $chat = chat::create($data);
+            if ($chat->gambar_pesan) {
+                $chat->gambar_pesan = route('getimgchat', ['id' => $chat->id]);
+            }
+            return $this->sendResponse($chat, 'Chat berhasil ditambahkan');
         } catch (Exception $e) {
             return $this->sendError(['error' => 'Terjadi kesalahan saat menyimpan chat']);
         }

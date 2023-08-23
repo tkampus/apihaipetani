@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('no_pengirim');
             $table->string('no_penerima');
             $table->string('text_pesan')->nullable();
-            $table->binary('gambar_pesan')->nullable();
+            // $table->binary('gambar_pesan')->nullable();
+            // $table->text('gambar_pesan')->nullable();
+            $table->string('gambar_pesan')->nullable();
             $table->integer('status');
             $table->timestamps();
         });

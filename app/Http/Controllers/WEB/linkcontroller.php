@@ -8,25 +8,35 @@ use App\Models\u_ahli;
 use App\Models\u_petani;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 
 class linkcontroller extends Controller
 {
     public function getimgchat($id)
     {
-        $event = chat::find($id);
-        return Response::make($event->gambar_pesan, 200, [
-            'Content-Type' => 'image/jpeg',
-            'Content-Disposition' => 'inline; filename="' . $event->judul . '.jpeg"',
-        ]);
+        $chat = chat::find($id);
+        // ================================================== disimpan binray di badabase
+        // return Response::make($chat->gambar_pesan, 200, [
+        //     'Content-Type' => 'image/jpeg',
+        //     'Content-Disposition' => 'inline; filename="' . $chat->judul . '.jpeg"',
+        // ]);
+        // =================================================== disimpan di text di dabase
+        // return '<img src="data:image/jpeg;base64,' . $chat->gambar_pesan . '" alt="Gambar Pesan">';
+        // =================================================== disipan di storage web api
+        // return $chat->gambar_pesan;
+        return '<img src="' . Storage::url($chat->gambar_pesan) . '" alt="Gambar Pesan">';
     }
     public function getimgevent($id)
     {
         $event = event::find($id);
-        return Response::make($event->gambar, 200, [
-            'Content-Type' => 'image/jpeg',
-            'Content-Disposition' => 'inline; filename="' . $event->judul . '.jpeg"',
-        ]);
+        // ================================================== disimpan binray di badabase
+        // return Response::make($event->gambar, 200, [
+        //     'Content-Type' => 'image/jpeg',
+        //     'Content-Disposition' => 'inline; filename="' . $event->judul . '.jpeg"',
+        // ]);
+        // =================================================== disipan di storage web api
+        return '<img src="' . Storage::url($event->gambar) . '" alt="Gambar Pesan">';
     }
     public function getimgprofil($role, $nohp)
     {
@@ -44,9 +54,12 @@ class linkcontroller extends Controller
         if ($data->gambar == null) {
             return 'belum pernah upload gambar';
         }
-        return Response::make($data->gambar, 200, [
-            'Content-Type' => 'image/jpeg',
-            'Content-Disposition' => 'inline; filename="' . $data->judul . '.jpeg"',
-        ]);
+        // ================================================== disimpan binray di badabase
+        // return Response::make($data->gambar, 200, [
+        //     'Content-Type' => 'image/jpeg',
+        //     'Content-Disposition' => 'inline; filename="' . $data->judul . '.jpeg"',
+        // ]);
+        // =================================================== disipan di storage web api
+        return '<img src="' . Storage::url($data->gambar) . '" alt="Gambar Pesan">';
     }
 }

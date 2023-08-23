@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 
 class resetsampel extends Command
 {
@@ -25,6 +26,9 @@ class resetsampel extends Command
      */
     public function handle()
     {
+        // Menghapus isi direktori storage/public
+        Storage::deleteDirectory('public/gambar');
+
         $this->call('migrate:reset');
 
         // Jalankan perintah kedua

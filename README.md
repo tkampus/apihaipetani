@@ -5,6 +5,7 @@
 1. Instal package Sanctum.
 2. Konfigurasi file `.env` untuk mengatur database dan pengaturan lainnya.
 3. Masukkan data sampel dengan menjalankan perintah `php artisan app:resetsampel`.
+4. konfigurasi penyimpanan storage dengan menjalankan perintah `php artisan storage:link`.
 
 ## API yang Sudah Tersedia
 
@@ -15,7 +16,6 @@
         - `email`
         - `password`
         - `c-password`
-        - `role` (petani atau ahli)
     - Output:
         - `username`
         - `token`
@@ -95,51 +95,42 @@
         - `id_chat`
 
 10. **Hapus Bookmark**
+
     - Endpoint: `/api/delbookmark`
     - Authorization: Bearer Token
     - Input:
         - `id` = id bookmark
 
-## API yang Masih Error
-
-1. **Get Ahli**
+11. **Get Ahli**
 
     - Endpoint: `/api/getahli`
     - Authorization: Bearer Token
     - Input: Tidak ada
 
-2. **Get Riwayat Obrolan**
+12. **Get Riwayat Obrolan**
 
     - Endpoint: `/api/getallchat`
     - Authorization: Bearer Token
     - Input:
         - `email`
-    - Error:
-        - Mengambil gambar dari database
 
-3. **Get Chat**
+13. **Get Chat**
 
     - Endpoint: `/api/getchat`
     - Authorization: Bearer Token
     - Input:
         - `email`
-    - Error:
-        - Mengambil gambar dari database
 
-4. **Set Chat**
+14. **Set Chat**
 
     - Endpoint: `/api/setchat`
     - Authorization: Bearer Token
     - Input:
         - `email`
-    - Error:
-        - Mengirim gambar dari database
 
-5. **Get Event**
+15. **Get Event**
 
     - Endpoint: `/api/getevent`
-    - Error:
-        - Mengambil gambar dari database
 
 ## API yang Belum Tersedia
 
@@ -155,6 +146,3 @@
     - Authorization: Bearer Token
     - Input:
         - (masukkan input yang dibutuhkan untuk log aktivitas)
-
-## Link Test API Postman
-https://app.getpostman.com/join-team?invite_code=4c5044ac2c5f6b3a2d3111ea29218be0&target_code=65240beb93fcf97ec6283caed6dc8605
